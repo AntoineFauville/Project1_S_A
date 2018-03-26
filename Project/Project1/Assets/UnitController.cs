@@ -30,19 +30,39 @@ public class UnitController : MonoBehaviour {
 
 		UpdateText ();
 
-		if(distance > selfDamageRange){
-			transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(4,0));
-		}
+		
 
 		distance = Vector3.Distance (transform.position, GameObject.Find ("WallDetection").transform.position);
 		//print (distance);
 
 		if (health <= 0) {
-			GameObject.DestroyImmediate (this.gameObject);
-		}
+            GameObject.DestroyImmediate (this.gameObject);
+            //gameObject.GetComponent<Rigidbody2D>().freezeRotation = false;
+            //gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            //gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+        }
+        else
+        {
+            if (distance > selfDamageRange)
+            {
+                transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(4, 0));
+            }
+        }
 	}
 
-	void UpdateText()
+    public void UnitLooseHealth(int healthAmount)
+    {
+        health -= healthAmount;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "powa") {
+            UnitLooseHealth(1);
+        }
+    }
+
+    void UpdateText()
 	{
 		unitText.text = health.ToString () + " " + textIndicator;
 
@@ -56,7 +76,7 @@ public class UnitController : MonoBehaviour {
 	IEnumerator WaitHealthCalculation(){
 		yield return new WaitForSeconds (0.7f);
 		if (distance <= selfDamageRange) {
-			health -= 1;
+            UnitLooseHealth(1);
 			transform.GetComponent<Rigidbody2D> ().gravityScale = 0;
 			transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(-250,250));
 			yield return new WaitForSeconds (0.2f);
@@ -69,7 +89,7 @@ public class UnitController : MonoBehaviour {
 	IEnumerator WaitRangeCalculation(){
 		yield return new WaitForSeconds (attackSpeed);
 		if (distance <= attackRange) {
-			GameObject.Find ("Wall").GetComponent<BossController> ().looseHealth (attack);
+			GameObject.Find ("ScriptManager").GetComponent<BossController> ().looseHealth (attack);
 		}
 
 		StartCoroutine (WaitRangeCalculation());

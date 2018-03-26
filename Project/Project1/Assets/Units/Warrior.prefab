@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 114870971104737548}
   m_Layer: 0
   m_Name: Warrior
-  m_TagString: Untagged
+  m_TagString: unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,7 +194,6 @@ MonoBehaviour:
   attackSpeed: 1
   attackRange: 2
   unitText: {fileID: 114165793718914202}
-  powaOn: 1
 --- !u!114 &114984050532023376
 MonoBehaviour:
   m_ObjectHideFlags: 1

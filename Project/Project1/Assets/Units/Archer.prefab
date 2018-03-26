@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 114033934283902756}
   m_Layer: 0
   m_Name: Archer
-  m_TagString: Untagged
+  m_TagString: unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,7 +140,6 @@ MonoBehaviour:
   attackSpeed: 1
   attackRange: 4
   unitText: {fileID: 114578402825562104}
-  powaOn: 1
 --- !u!114 &114097933244106314
 MonoBehaviour:
   m_ObjectHideFlags: 1

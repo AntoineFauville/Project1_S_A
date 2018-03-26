@@ -1599,6 +1599,7 @@ GameObject:
   - component: {fileID: 1777408266}
   - component: {fileID: 1777408265}
   - component: {fileID: 1777408267}
+  - component: {fileID: 1777408268}
   m_Layer: 0
   m_Name: ScriptManager
   m_TagString: Untagged
@@ -1652,6 +1653,22 @@ MonoBehaviour:
   spawnPoint: {fileID: 2054087300}
   prefabCanon: {fileID: 1950302318751802, guid: e75196b024bff8e45b0eac8e918ea457,
     type: 2}
+  spawnTime: 2
+--- !u!114 &1777408268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1777408264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0184c4af6017e4f86e35d6e92493d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelText: {fileID: 1140837654}
+  HealthText: {fileID: 1433305709}
+  initialBossLevel: 1
+  initialBossHealth: 30
 --- !u!1 &1786973213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1846,7 +1863,6 @@ GameObject:
   - component: {fileID: 1807896346}
   - component: {fileID: 1807896345}
   - component: {fileID: 1807896344}
-  - component: {fileID: 1807896347}
   m_Layer: 0
   m_Name: Wall
   m_TagString: wall
@@ -1937,21 +1953,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1807896347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1807896343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf0184c4af6017e4f86e35d6e92493d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelText: {fileID: 1140837654}
-  HealthText: {fileID: 1433305709}
-  initialBossLevel: 1
-  initialBossHealth: 10
 --- !u!1 &1925188324
 GameObject:
   m_ObjectHideFlags: 0
@@ -2045,7 +2046,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1925188324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.575, y: -0.24, z: 0}
+  m_LocalPosition: {x: 6.666, y: -0.24, z: 0}
   m_LocalScale: {x: 0.12500648, y: 6.5500073, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

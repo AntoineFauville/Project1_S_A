@@ -7,12 +7,14 @@ public class canonController : MonoBehaviour {
 	public GameObject spawnPoint;
 	public GameObject prefabCanon;
 
+    public float spawnTime = 1f;
+
 	void Start () {
 		StartCoroutine (WaitUpdate ());
 	}
 
 	IEnumerator WaitUpdate (){
-		yield return new WaitForSeconds (1f);
+		yield return new WaitForSeconds (spawnTime);
 
 		GameObject pref;
 		pref = prefabCanon;

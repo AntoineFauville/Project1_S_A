@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 114417899159435666}
   m_Layer: 0
   m_Name: Tank
-  m_TagString: Untagged
+  m_TagString: unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,7 +173,6 @@ MonoBehaviour:
   attackSpeed: 1
   attackRange: 2
   unitText: {fileID: 114141600232887494}
-  powaOn: 1
 --- !u!114 &114634446007677896
 MonoBehaviour:
   m_ObjectHideFlags: 1

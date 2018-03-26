@@ -6,6 +6,7 @@ TagManager:
   tags:
   - wall
   - powa
+  - unit
   layers:
   - Default
   - TransparentFX
