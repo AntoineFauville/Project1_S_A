@@ -20,7 +20,9 @@ public class BossController : MonoBehaviour {
 		bossHealth = initialBossHealth;
 
 		UpdateText ();
-	}
+
+        StartCoroutine(PowerAttackLazer());
+    }
 
 	void UpdateText (){
 		levelText.text = bossLevel.ToString();
@@ -38,7 +40,7 @@ public class BossController : MonoBehaviour {
 		if (bossHealth <= 0) {
 			bossLevel++;
 			bossHealth = initialBossHealth;
-			StartCoroutine(PowerAttack ());
+			//StartCoroutine(PowerAttack ());
 		}
 	}
 
@@ -50,4 +52,19 @@ public class BossController : MonoBehaviour {
 		yield return new WaitForSeconds (0.06f);
 		GameObject.Find ("Powa").transform.localScale = new Vector3(1,1,1);
 	}
+
+    IEnumerator PowerAttackLazer()
+    {
+        GameObject.Find("Powa2").GetComponent<BoxCollider2D>().enabled = false;
+        GameObject.Find("Powa2").GetComponent<SpriteRenderer>().enabled = false;
+
+        yield return new WaitForSeconds(3f);
+
+        GameObject.Find("Powa2").GetComponent<BoxCollider2D>().enabled = true;
+        GameObject.Find("Powa2").GetComponent<SpriteRenderer>().enabled = true;
+
+        yield return new WaitForSeconds(1f);
+
+        StartCoroutine(PowerAttackLazer());
+    }
 }

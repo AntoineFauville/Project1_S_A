@@ -189,10 +189,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbf4e16211bdc3549b90831016d6576b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 2
   attack: 2
   attackSpeed: 1
-  attackRange: 2
+  attackRange: 1
+  energyValue: 1
   unitText: {fileID: 114165793718914202}
 --- !u!114 &114984050532023376
 MonoBehaviour:

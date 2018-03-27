@@ -8,6 +8,6 @@ public class SpawnController : MonoBehaviour {
 	public GameObject[] SpawnPoints;
 
 	public void OnClic(int unitIndex){
-		Instantiate (Unit[unitIndex],SpawnPoints[unitIndex].transform);
+		Instantiate (Unit[unitIndex],SpawnPoints[2].transform);
 	}
 }

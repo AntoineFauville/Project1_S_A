@@ -9,20 +9,24 @@ public class UnitController : MonoBehaviour {
 	public int attack = 1;
 
 	float distance;
-	float selfDamageRange = 1.5f;
+	float selfDamageRange = 1.1f;
 
 	public float attackSpeed = 0.5f;
 	public float attackRange = 1f;
 
+    public int energyValue = 1;
+
 	public Text unitText;
 	string textIndicator; //range indicator
 
+    bool a,b;
+
 	void Start () {
-		health = 5;
 		StartCoroutine (WaitHealthCalculation());
 		StartCoroutine (WaitRangeCalculation());
+        //StartCoroutine(WaitLazer());
 
-		UpdateText ();
+        UpdateText ();
 	}
 	
 
@@ -33,13 +37,20 @@ public class UnitController : MonoBehaviour {
 		
 
 		distance = Vector3.Distance (transform.position, GameObject.Find ("WallDetection").transform.position);
-		//print (distance);
+        //print (distance);
 
-		if (health <= 0) {
-            GameObject.DestroyImmediate (this.gameObject);
-            //gameObject.GetComponent<Rigidbody2D>().freezeRotation = false;
-            //gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-            //gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+       if (health <= 0 && !a) {
+
+            a = true;
+
+            GameObject.Find("ScriptManager").GetComponent<EnergyController>().GetBackEnergy(energyValue);
+            
+            gameObject.GetComponent<Rigidbody2D>().freezeRotation = false;
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(150,150,150,0.5f);
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+
+            StartCoroutine(Waitdie());
         }
         else
         {
@@ -62,6 +73,15 @@ public class UnitController : MonoBehaviour {
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "powa2" && !b)
+        {
+            b = true;
+            StartCoroutine(WaitLazer());
+        }
+    }
+
     void UpdateText()
 	{
 		unitText.text = health.ToString () + " " + textIndicator;
@@ -73,12 +93,27 @@ public class UnitController : MonoBehaviour {
 		}
 	}
 
-	IEnumerator WaitHealthCalculation(){
+    IEnumerator Waitdie() {
+        yield return new WaitForSeconds(4f);
+        GameObject.DestroyImmediate(this.gameObject);
+    }
+
+    IEnumerator WaitLazer()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            yield return new WaitForSeconds(0.5f);
+            UnitLooseHealth(1);
+        }
+        b = false;
+    }
+
+    IEnumerator WaitHealthCalculation(){
 		yield return new WaitForSeconds (0.7f);
 		if (distance <= selfDamageRange) {
             UnitLooseHealth(1);
 			transform.GetComponent<Rigidbody2D> ().gravityScale = 0;
-			transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(-250,250));
+			transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(-100,0));
 			yield return new WaitForSeconds (0.2f);
 			transform.GetComponent<Rigidbody2D> ().gravityScale = 1;
 		}

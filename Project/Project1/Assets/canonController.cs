@@ -19,7 +19,7 @@ public class canonController : MonoBehaviour {
 		GameObject pref;
 		pref = prefabCanon;
 
-		Instantiate (pref, spawnPoint.transform);
+		//Instantiate (pref, spawnPoint.transform);
 
 		StartCoroutine (WaitUpdate ());
 	}

@@ -171,7 +171,8 @@ MonoBehaviour:
   health: 8
   attack: 1
   attackSpeed: 1
-  attackRange: 2
+  attackRange: 1
+  energyValue: 3
   unitText: {fileID: 114141600232887494}
 --- !u!114 &114634446007677896
 MonoBehaviour:

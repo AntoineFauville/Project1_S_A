@@ -7,6 +7,7 @@ TagManager:
   - wall
   - powa
   - unit
+  - powa2
   layers:
   - Default
   - TransparentFX
